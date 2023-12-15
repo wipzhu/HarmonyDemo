@@ -2,7 +2,7 @@ import {DiscoverRow} from '../Discover/Discover'
 
 @Entry
 @Component
-export default struct Contact {
+export default struct My {
   build() {
     Navigation() {
       List({ space: 10 }) {

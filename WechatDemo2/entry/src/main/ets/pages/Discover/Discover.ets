@@ -1,6 +1,6 @@
 @Entry
 @Component
-export default struct Contact {
+export default struct Discover {
   build() {
 
     Navigation() {
