@@ -1,4 +1,7 @@
 import home from './WeChat/Home'
+import contact from './Contact/Contact'
+import discover from './Discover/Discover'
+import my from './My/My'
 
 @Entry
 @Component
@@ -34,12 +37,15 @@ struct Index {
         }.tabBar(this.TabBuilder(0))
 
         TabContent(){
+          contact()
         }.tabBar(this.TabBuilder(1))
 
         TabContent(){
+          discover()
         }.tabBar(this.TabBuilder(2))
 
         TabContent(){
+          my()
         }.tabBar(this.TabBuilder(3))
       }
       .vertical(false)

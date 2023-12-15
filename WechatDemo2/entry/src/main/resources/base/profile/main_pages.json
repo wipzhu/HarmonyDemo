@@ -2,6 +2,9 @@
   "src": [
     "pages/Index",
     "pages/WeChat/Home",
-    "pages/WeChat/Chat"
+    "pages/WeChat/Chat",
+    "pages/Discover/Discover",
+    "pages/Contact/Contact",
+    "pages/My/My"
   ]
 }
