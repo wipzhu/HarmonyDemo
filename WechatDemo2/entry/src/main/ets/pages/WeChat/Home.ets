@@ -1,6 +1,6 @@
 import router from '@ohos.router'
 
-// @Entry
+@Entry
 @Component
 export default struct Home {
   @State navTitle: string = 'WeChat'
@@ -63,7 +63,8 @@ export default struct Home {
               .onClick(() => {
                 router.pushUrl({ url: 'pages/WeChat/Chat' ,
                   params: {
-                    friendNickName:"老张"
+                    friendNickName:"猪头",
+                    friendAvatar: '/images/icon1.png',
                   }})
               })
 
@@ -78,7 +79,8 @@ export default struct Home {
               .onClick(() => {
                 router.pushUrl({ url: 'pages/WeChat/Chat' ,
                   params: {
-                    friendNickName:"老张"
+                    friendNickName:"老张",
+                    friendAvatar: '/images/icon2.png',
                   }})
 
               })
@@ -94,7 +96,8 @@ export default struct Home {
               .onClick(() => {
                 router.pushUrl({ url: 'pages/WeChat/Chat',
                   params: {
-                    friendNickName:"老张"
+                    friendNickName:"王富贵",
+                    friendAvatar: '/images/icon3.png',
                   }})
               })
 

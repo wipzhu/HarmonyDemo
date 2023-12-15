@@ -1,9 +1,11 @@
 import inputMethod from '@ohos.inputMethod'
+import router from '@ohos.router'
 
 @Entry
 @Component
 export default struct Chat {
-  @State friendNickName: string = "猪头"
+  @State friendNickName: string = router.getParams()['friendNickName']
+  @State friendAvatar: string = router.getParams()['friendAvatar']
 
   @Builder NavTitle() {
     Row() {
@@ -29,7 +31,7 @@ export default struct Chat {
         List() {
           ListItem() {
             Flex({ direction: FlexDirection.Row }) {
-              Image('/images/icon1.png')
+              Image(this.friendAvatar)
                 .width(38)
                 .height(38)
                 .borderRadius(5)
@@ -49,7 +51,7 @@ export default struct Chat {
 
           ListItem() {
             Flex({ direction: FlexDirection.Row }) {
-              Image('/images/icon1.png')
+              Image(this.friendAvatar)
                 .width(38)
                 .height(38)
                 .borderRadius(5)
@@ -79,7 +81,7 @@ export default struct Chat {
                 .lineHeight(20)
                 .margin({ right: 5, top: 5, bottom: 5 })
 
-              Image('/images/icon2.png')
+              Image('/images/ggbond.jpg')
                 .width(38)
                 .height(38)
                 .borderRadius(5)
@@ -94,7 +96,7 @@ export default struct Chat {
 
           ListItem() {
             Flex({ direction: FlexDirection.Row }) {
-              Image('/images/icon1.png')
+              Image(this.friendAvatar)
                 .width(38)
                 .height(38)
                 .borderRadius(5)
@@ -115,7 +117,7 @@ export default struct Chat {
 
           ListItem() {
             Flex({ direction: FlexDirection.Row }) {
-              Image('/images/icon1.png')
+              Image(this.friendAvatar)
                 .width(38)
                 .height(38)
                 .borderRadius(5)
@@ -144,7 +146,7 @@ export default struct Chat {
                 .lineHeight(20)
                 .margin({ right: 5, top: 5, bottom: 5 })
 
-              Image('/images/icon2.png')
+              Image('/images/ggbond.jpg')
                 .width(38)
                 .height(38)
                 .borderRadius(5)
@@ -168,7 +170,7 @@ export default struct Chat {
                 .lineHeight(20)
                 .margin({ right: 5, top: 5, bottom: 5 })
 
-              Image('/images/icon2.png')
+              Image('/images/ggbond.jpg')
                 .width(38)
                 .height(38)
                 .borderRadius(5)
@@ -189,6 +191,7 @@ export default struct Chat {
           console.log("开始滑动")
           inputMethod.getController().hideSoftKeyboard()
         })
+        // .alignListItem(ListItemAlign.End)
         .listDirection(Axis.Vertical)
         .backgroundColor('rgb(245,245,245)')
         .height('90%')
