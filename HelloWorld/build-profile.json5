@@ -1,0 +1,41 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "storePassword": "00000019F342F0BD202D724D8B167DC427F0FB1432D07F053DABF8A0B5A6C13A249806B58ABA99B1F7",
+          "certpath": "E:/www/Harmony/HelloWorld/WipzhuDemo.cer",
+          "keyAlias": "WipzhuDemoFaKey",
+          "keyPassword": "00000019301F58973D64EAD0A9CB0F1F395C7286CC72AE85C5B0B3220F92406ED04A6181A8D249E179",
+          "profile": "E:/www/Harmony/HelloWorld/WipzhuAppDemoRelease.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "E:/www/Harmony/HelloWorld/WipzhuDemoFaKey.p12"
+        }
+      }
+    ],
+    "compileSdkVersion": 9,
+    "compatibleSdkVersion": 9,
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

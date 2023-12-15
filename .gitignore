@@ -1,0 +1,12 @@
+.idea/
+environment/
+
+**/.preview/
+**/.hvigor/
+**/build/
+**/oh_modules/
+
+.DS_Store
+**/logs
+*.log
+**/*.log
