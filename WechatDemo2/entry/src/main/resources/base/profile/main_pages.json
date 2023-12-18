@@ -5,6 +5,7 @@
     "pages/WeChat/Chat",
     "pages/Discover/Discover",
     "pages/Contact/Contact",
+    "pages/Contact/PersonalPage",
     "pages/My/My"
   ]
 }
