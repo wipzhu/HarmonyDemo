@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_WechatDemo2_com.example.wechatdemo_240086000020497855.cer",
+          "storePassword": "0000001B7FE8F9C0925484B0AC536FE6B3604A12AD9AB16D82079B9970ED73267BC09C2D10FB84AB680243",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B35B2F6E39F6AD1069D3DAE3E8FA544578AE9A18F0856FD2E8980CB28882A9A219DD0CB77BC25A5",
+          "profile": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_WechatDemo2_com.example.wechatdemo_240086000020497855.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_WechatDemo2_com.example.wechatdemo_240086000020497855.p12"
+        }
+      }
+    ],
     "compileSdkVersion": 9,
     "compatibleSdkVersion": 9,
     "products": [
