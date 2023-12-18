@@ -18,169 +18,106 @@ export default struct Chat {
 
   @Builder NavMenus() {
     Row() {
-      Image('/images/we_add.png')
+      Image('/images/we_more.png')
         .size({ width: 24, height: 24 })
         .margin({ left: 5 })
     }
     .justifyContent(FlexAlign.End)
   }
 
+
   build() {
     Column() {
       Navigation() {
         List() {
           ListItem() {
-            Flex({ direction: FlexDirection.Row }) {
-              Image(this.friendAvatar)
-                .width(38)
-                .height(38)
-                .borderRadius(5)
-                .margin({ right: 5, top: 5, bottom: 5 })
-              Text('海燕啊，你可长点心吧！！！！')
-                .backgroundColor(Color.White)
-                .fontColor(Color.Black)
-                .padding(10)
-                .borderRadius(6)
-                .lineHeight(20)
-                .margin({ left: 5, top: 5, bottom: 5 })
-            }
+            MessageRow({ message: '海燕啊，你可长点心吧~~~~~', friendAvatar: this.friendAvatar })
           }
+          .backgroundColor(Color.Red)
           .width('100%')
           .margin({ bottom: 5, top: 5 })
-          .padding({ left: 10, top: 10, bottom: 1, right: 30 })
+          .padding({ left: 10, top: 5, right: 30 })
 
           ListItem() {
-            Flex({ direction: FlexDirection.Row }) {
-              Image(this.friendAvatar)
-                .width(38)
-                .height(38)
-                .borderRadius(5)
-                .margin({ right: 5, top: 5, bottom: 5 })
-              Text('海燕啊，你可长点心吧！！！！')
-                .backgroundColor(Color.White)
-                .fontColor(Color.Black)
-                .padding(10)
-                .borderRadius(6)
-                .lineHeight(20)
-                .margin({ left: 5, top: 5, bottom: 5 })
-            }
+            MessageRow({ message: '海燕啊，你可长点心吧！！！！', friendAvatar: this.friendAvatar })
           }
+          .backgroundColor(Color.Green)
           .width('100%')
           .margin({ bottom: 5, top: 5 })
-          .padding({ left: 10, top: 10, bottom: 1, right: 30 })
+          .padding({ left: 10, top: 5, right: 30 })
+
+          ListItem() {
+            MessageRowSelf({message:"我是燕子，我要走了，请你多保重", friendAvatar:'/images/ggbond.jpg'})
+          }
+          .backgroundColor(Color.Blue)
+          .width('100%')
+          .margin({ bottom: 5, top: 5 })
+          .padding({ left: 30, top: 5, right: 10 })
 
 
           ListItem() {
-            Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.End }) {
-
-              Text('我是燕子，我要走了，请你多保重')
-                .backgroundColor('rgb(63,182,57)')
-                .fontColor(Color.Black)
-                .padding(10)
-                .borderRadius(6)
-                .lineHeight(20)
-                .margin({ right: 5, top: 5, bottom: 5 })
-
-              Image('/images/ggbond.jpg')
-                .width(38)
-                .height(38)
-                .borderRadius(5)
-                .margin({ left: 5, top: 5, bottom: 5 })
-            }
-
+            MessageRow({ message: '燕子你走了我可怎么活啊燕子～～～～燕子～～～～啊啊～～～～～～～', friendAvatar: this.friendAvatar })
           }
+          .backgroundColor(Color.Red)
           .width('100%')
           .margin({ bottom: 5, top: 5 })
-          .padding({ left: 30, top: 10, bottom: 1, right: 10 })
-
+          .padding({ left: 10, top: 5, right: 30 })
 
           ListItem() {
-            Flex({ direction: FlexDirection.Row }) {
-              Image(this.friendAvatar)
-                .width(38)
-                .height(38)
-                .borderRadius(5)
-                .margin({ right: 5, top: 5, bottom: 5 })
-              Text('燕子你走了我可怎么活啊燕子～～～～燕子～～～～啊啊～～～～～～～')
-                .backgroundColor(Color.White)
-                .fontColor(Color.Black)
-                .padding(10)
-                .borderRadius(6)
-                .lineHeight(20)
-                .margin({ left: 5, top: 5, bottom: 5 })
-            }
+            MessageRow({ message: '燕子你走了我可怎么活啊燕子～～～～燕子～～～～啊啊～～～～～～～', friendAvatar: this.friendAvatar })
           }
+          .backgroundColor(Color.Blue)
           .width('100%')
           .margin({ bottom: 5, top: 5 })
-          .padding({ left: 10, top: 10, bottom: 1, right: 30 })
-
+          .padding({ left: 10, top: 5, right: 30 })
 
           ListItem() {
-            Flex({ direction: FlexDirection.Row }) {
-              Image(this.friendAvatar)
-                .width(38)
-                .height(38)
-                .borderRadius(5)
-                .margin({ right: 5, top: 5, bottom: 5 })
-              Text('燕子你走了我可怎么活啊燕子～～～～燕子～～～～啊啊～～～～～～～')
-                .backgroundColor(Color.White)
-                .fontColor(Color.Black)
-                .padding(10)
-                .borderRadius(6)
-                .lineHeight(20)
-                .margin({ left: 5, top: 5, bottom: 5 })
-            }
+            MessageRowSelf({message:"我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊", friendAvatar:'/images/ggbond.jpg'})
           }
+          .backgroundColor(Color.Green)
           .width('100%')
           .margin({ bottom: 5, top: 5 })
-          .padding({ left: 10, top: 10, bottom: 1, right: 30 })
+          .padding({ left: 30, top: 5, right: 10 })
 
           ListItem() {
-            Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.End }) {
-
-              Text('我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊~~~~')
-                .backgroundColor('rgb(63,182,57)')
-                .fontColor(Color.Black)
-                .padding(10)
-                .borderRadius(6)
-                .lineHeight(20)
-                .margin({ right: 5, top: 5, bottom: 5 })
-
-              Image('/images/ggbond.jpg')
-                .width(38)
-                .height(38)
-                .borderRadius(5)
-                .margin({ left: 5, top: 5, bottom: 5 })
-            }
-
+            MessageRowSelf({message:"我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊", friendAvatar:'/images/ggbond.jpg'})
           }
+          .backgroundColor(Color.Blue)
           .width('100%')
           .margin({ bottom: 5, top: 5 })
-          .padding({ left: 30, top: 10, bottom: 1, right: 10 })
-
+          .padding({ left: 30, top: 5, right: 10 })
 
           ListItem() {
-            Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.End }) {
-
-              Text('我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊~~~~')
-                .backgroundColor('rgb(63,182,57)')
-                .fontColor(Color.Black)
-                .padding(10)
-                .borderRadius(6)
-                .lineHeight(20)
-                .margin({ right: 5, top: 5, bottom: 5 })
-
-              Image('/images/ggbond.jpg')
-                .width(38)
-                .height(38)
-                .borderRadius(5)
-                .margin({ left: 5, top: 5, bottom: 5 })
-            }
-
+            MessageRowSelf({message:"我也不知道你该怎么活啊~~~~我也不知道你该怎么活啊", friendAvatar:'/images/ggbond.jpg'})
           }
+          .backgroundColor(Color.Red)
           .width('100%')
           .margin({ bottom: 5, top: 5 })
-          .padding({ left: 30, top: 10, bottom: 1, right: 10 })
+          .padding({ left: 30, top: 5, right: 10 })
+
+          ListItem() {
+            MessageRow({ message: '这次终于没问题了', friendAvatar: this.friendAvatar })
+          }
+          .backgroundColor(Color.Blue)
+          .width('100%')
+          .margin({ bottom: 5, top: 5 })
+          .padding({ left: 10, top: 5, right: 30 })
+
+          ListItem() {
+            MessageRow({ message: '哦吼，还是有问题', friendAvatar: this.friendAvatar })
+          }
+          .backgroundColor(Color.Green)
+          .width('100%')
+          .margin({ bottom: 5, top: 5 })
+          .padding({ left: 10, top: 5, right: 30 })
+
+          ListItem() {
+            MessageRowSelf({message:"你想怎么活就怎么活吧", friendAvatar:'/images/ggbond.jpg'})
+          }
+          .backgroundColor(Color.Blue)
+          .width('100%')
+          .margin({ bottom: 5, top: 5 })
+          .padding({ left: 30, top: 5, right: 10 })
 
         }
         .onScroll(() => {
@@ -194,7 +131,7 @@ export default struct Chat {
         // .alignListItem(ListItemAlign.End)
         .listDirection(Axis.Vertical)
         .backgroundColor('rgb(245,245,245)')
-        .height('90%')
+        .height('92%')
         .width('100%')
 
 
@@ -210,7 +147,7 @@ export default struct Chat {
             .backgroundColor(Color.White)
             .borderRadius(5)
 
-          Image('/images/emoj.png')
+          Image('/images/emoji.png')
             .width(30)
             .height(30)
             .margin({ top: 5 })
@@ -220,10 +157,11 @@ export default struct Chat {
             .height(30)
             .margin({ top: 5 })
         }
-        .padding({ top: 10, left: 15, right: 15 })
-        .width('100%')
-        .height(60)
         .backgroundColor('rgb(240,240,240)')
+        // .backgroundColor(Color.Red)
+        .padding({ top: 8, left: 12, right: 12 })
+        .width('100%')
+        .height('8%')
 
       }
       .title(this.NavTitle())
@@ -234,5 +172,57 @@ export default struct Chat {
       .size({ width: '100%', height: '100%' })
       .backgroundColor('rgb(237,237,237)')
     }
+
+
+  }
+}
+@Component
+export struct MessageRow {
+  message:string
+  friendAvatar:string
+
+  build() {
+
+    Flex({ direction: FlexDirection.Row }) {
+      Image(this.friendAvatar)
+        .width(38)
+        .height(38)
+        .borderRadius(5)
+        .margin({ right: 5, top: 5, bottom: 5 })
+      Text(this.message)
+        .backgroundColor(Color.White)
+        .fontColor(Color.Black)
+        .padding(10)
+        .borderRadius(6)
+        .lineHeight(20)
+        .margin({ left: 5, top: 5, bottom: 5 })
+    }
+
+  }
+}
+@Component
+export struct MessageRowSelf {
+  message:string
+  friendAvatar:string
+
+  build() {
+
+    Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.End }) {
+
+      Text(this.message)
+        .backgroundColor('rgb(63,182,57)')
+        .fontColor(Color.Black)
+        .padding(10)
+        .borderRadius(6)
+        .lineHeight(20)
+        .margin({ right: 5, top: 5, bottom: 5 })
+
+      Image(this.friendAvatar)
+        .width(38)
+        .height(38)
+        .borderRadius(5)
+        .margin({ left: 5, top: 5, bottom: 5 })
+    }
+
   }
 }

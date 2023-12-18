@@ -59,26 +59,30 @@ export default struct My {
 
         ListItemGroup() {
           ListItem() {
-            DiscoverRow({ iconPath: $r("app.media.my_service"), titleStr: "服务" })
+            DiscoverRow({ iconPath: $r("app.media.my_icon_1"), titleStr: "服务" })
           }
         }
         .backgroundColor(Color.White)
 
         ListItemGroup() {
           ListItem() {
-            DiscoverRow({ iconPath: $r('app.media.my_collect'), titleStr: '收藏' })
+            DiscoverRow({ iconPath: $r('app.media.my_icon_2'), titleStr: '收藏' })
           }
 
           ListItem() {
-            DiscoverRow({ iconPath: $r('app.media.my_moment'), titleStr: '朋友圈' })
+            DiscoverRow({ iconPath: $r('app.media.my_icon_3'), titleStr: '朋友圈' })
           }
 
           ListItem() {
-            DiscoverRow({ iconPath: $r('app.media.my_card'), titleStr: '卡包' })
+            DiscoverRow({ iconPath: $r('app.media.my_icon_4'), titleStr: '视频号' })
           }
 
           ListItem() {
-            DiscoverRow({ iconPath: $r('app.media.my_emoj'), titleStr: '表情' })
+            DiscoverRow({ iconPath: $r('app.media.my_icon_5'), titleStr: '卡包' })
+          }
+
+          ListItem() {
+            DiscoverRow({ iconPath: $r('app.media.my_icon_6'), titleStr: '表情' })
           }
         }
         .divider({ strokeWidth: 1, color: 'rgb(247,247,247)', startMargin: 0, endMargin: 0 }) // 每行之间的分界线
@@ -86,7 +90,7 @@ export default struct My {
 
         ListItemGroup() {
           ListItem() {
-            DiscoverRow({ iconPath: $r('app.media.my_set'), titleStr: '设置' })
+            DiscoverRow({ iconPath: $r('app.media.my_icon_7'), titleStr: '设置' })
           }
         }
         .backgroundColor(Color.White)

@@ -168,11 +168,13 @@ export default struct Contact {
   @Builder itemHeader(text: string) {
     Row() {
       Text(text)
+        .fontColor('#ff9b9b9b')
+        .fontSize(12)
         .padding({ left: 15, top:5, bottom:5 })
     }
     .margin({})
     .width('100%')
-    .height(25)
+    .height(32)
     .backgroundColor('#ededed')
     .justifyContent(FlexAlign.Start)
 
@@ -210,14 +212,14 @@ export struct ContactRow {
     Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) {
         Image(this.iconPath)
-          .width(40)
-          .height(40)
+          .width(36)
+          .height(36)
 
         Text(this.titleStr)
           .fontSize(18)
           .margin({ left: 15 })
       }
-      .height(56)
+
     }
     .height(56)
     .padding({ left: 10, right: 10 })
