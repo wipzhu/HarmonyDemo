@@ -54,7 +54,7 @@ export default struct Home {
             List() {
               ListItem() {
                 MessageRow({
-                  imagePath: '/images/icon1.png',
+                  imagePath: '/images/avatar1.png',
                   nickName: '猪头',
                   msgContent: '燕子你走了我可怎么活啊燕子～～～～燕子～～～～',
                   msgTime: '13:14'
@@ -64,13 +64,13 @@ export default struct Home {
                 router.pushUrl({ url: 'pages/WeChat/Chat' ,
                   params: {
                     friendNickName:"猪头",
-                    friendAvatar: '/images/icon1.png',
+                    friendAvatar: '/images/avatar1.png',
                   }})
               })
 
               ListItem() {
                 MessageRow({
-                  imagePath: '/images/icon2.png',
+                  imagePath: '/images/avatar2.png',
                   nickName: '老张',
                   msgContent: '欢迎关注幽蓝计划公众号',
                   msgTime: '12:13'
@@ -80,14 +80,14 @@ export default struct Home {
                 router.pushUrl({ url: 'pages/WeChat/Chat' ,
                   params: {
                     friendNickName:"老张",
-                    friendAvatar: '/images/icon2.png',
+                    friendAvatar: '/images/avatar2.png',
                   }})
 
               })
 
               ListItem() {
                 MessageRow({
-                  imagePath: '/images/icon3.png',
+                  imagePath: '/images/avatar3.png',
                   nickName: '王富贵',
                   msgContent: '你猜这是为什么',
                   msgTime: '12:13'
@@ -97,7 +97,7 @@ export default struct Home {
                 router.pushUrl({ url: 'pages/WeChat/Chat',
                   params: {
                     friendNickName:"王富贵",
-                    friendAvatar: '/images/icon3.png',
+                    friendAvatar: '/images/avatar3.png',
                   }})
               })
 

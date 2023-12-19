@@ -22,9 +22,10 @@ struct PersonalPage {
                   Flex({ direction: FlexDirection.Row }) {
                     Text(this.person['name'])
                       .fontSize(22)
-                    Image($r('app.media.info_logo'))
+                    Image($r("app.media.info_male"))
                       .width(20)
                       .height(20)
+                      .margin({left:5})
 
                   }
 
@@ -69,7 +70,7 @@ struct PersonalPage {
 
                   Text('18272891085')
                     .fontColor('#566c95')
-                    .fontWeight(FontWeight.Bold)
+                    .fontWeight(FontWeight.Regular)
                     .textAlign(TextAlign.Start)
                 }
               }
@@ -143,7 +144,7 @@ struct PersonalPage {
                     .width(100)
                   // $r("app.media.arrow_right_filled")
 
-                  Image('/images/icon1.png')
+                  Image('/images/avatar1.png')
                     .width(50)
                     .height(50)
 
@@ -202,7 +203,7 @@ struct PersonalPage {
                   .width(25)
                   .height(25)
 
-                Text('音视频童话')
+                Text('音视频通话')
                   .fontSize(19)
                   .fontWeight(700)
                   .fontColor('rgb(87,107,148)')
@@ -224,7 +225,7 @@ struct PersonalPage {
       .hideBackButton(false)
       .menus(this.NavMenus())
       .size({ width: '100%', height: '100%' })
-      .backgroundColor('rgb(237,237,237)')
+      .backgroundColor('#ffffff')
     }
     .width('100%')
     .height('100%')
@@ -234,7 +235,7 @@ struct PersonalPage {
   @Builder NavMenus() { // CustomBuilder类型的菜单栏
     Row() {
 
-      Image('/images/we_add.png')
+      Image('/images/we_more.png')
         .size({ width: 24, height: 24 })
         .margin({ left: 5 })
     }.justifyContent(FlexAlign.End)

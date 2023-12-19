@@ -8,17 +8,17 @@ export default struct Contact {
     {
       "letter": "L",
       "data": [
-        { "name": "老张", "avtar": "/images/icon2.png", "wx_id": "lao_zhang" }, {
+        { "name": "老张", "avtar": "/images/avatar2.png", "wx_id": "lao_zhang" }, {
         "name": "老李",
-        "avtar": "/images/icon3.png",
+        "avtar": "/images/avatar3.png",
         "wx_id": "lao_li"
       },
-        { "name": "吕青山", "avtar": "/images/icon1.png", "wx_id": "lv_qing_shan" }
+        { "name": "吕青山", "avtar": "/images/avatar1.png", "wx_id": "lv_qing_shan" }
       ]
     },
     {
       "letter": "W",
-      "data": [{ "name": "王富贵", "avtar": "/images/icon3.png", "wx_id": "fu_gui" }, {
+      "data": [{ "name": "王富贵", "avtar": "/images/avatar3.png", "wx_id": "fu_gui" }, {
         "name": "wipzhu",
         "avtar": "/images/ggbond.jpg",
         "wx_id": "ggbond"
@@ -27,14 +27,14 @@ export default struct Contact {
     {
       "letter": "Z",
       "data": [
-        { "name": "猪头", "avtar": "/images/icon1.png", "wx_id": "piggy" }, {
+        { "name": "猪头", "avtar": "/images/avatar1.png", "wx_id": "piggy" }, {
         "name": "张梦珍",
-        "avtar": "/images/icon2.png",
+        "avtar": "/images/avatar2.png",
         "wx_id": "dream_true"
       },
-        { "name": "朱小花", "avtar": "/images/icon3.png", "wx_id": "wipzhu" }, {
+        { "name": "朱小花", "avtar": "/images/avatar3.png", "wx_id": "wipzhu" }, {
         "name": "庄周",
-        "avtar": "/images/icon2.png",
+        "avtar": "/images/avatar2.png",
         "wx_id": "butter_fly"
       },
         { "name": "脏脏包", "avtar": "/images/ggbond.jpg", "wx_id": "dirty_guy" }]
@@ -212,8 +212,8 @@ export struct ContactRow {
     Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) {
         Image(this.iconPath)
-          .width(36)
-          .height(36)
+          .width(46)
+          .height(46)
 
         Text(this.titleStr)
           .fontSize(18)
@@ -221,8 +221,7 @@ export struct ContactRow {
       }
 
     }
-    .height(56)
-    .padding({ left: 10, right: 10 })
+    .padding({ left: 10, right: 10, top: 5, bottom: 5 })
   }
 }
 
