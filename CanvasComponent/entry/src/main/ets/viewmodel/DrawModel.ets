@@ -312,7 +312,6 @@ export default class DrawModel {
    * @param scopeNum scopeNum.
    */
   getPrizeData(scopeNum: number): PrizeData {
-    console.log("scopeNum:" + scopeNum)
     let prizeData: PrizeData = new PrizeData();
     switch (scopeNum) {
       case EnumeratedValue.SIX:

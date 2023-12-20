@@ -48,4 +48,4 @@ class Logger {
   }
 }
 
-export default new Logger('[CanvasComponent]', 0xFF00)
+export default new Logger('[DrawDemo]', 0xFF00)
