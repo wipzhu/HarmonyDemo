@@ -51,6 +51,8 @@ struct CanvasPage {
         let windowProperties = windowClass.getWindowProperties();
         this.screenWidth = px2vp(windowProperties.windowRect.width);
         this.screenHeight = px2vp(windowProperties.windowRect.height);
+        // this.screenWidth = 406
+        // this.screenHeight = 856
       })
       .catch((error: Error) => {
         Logger.error('Failed to obtain the window size. Cause: ' + JSON.stringify(error));

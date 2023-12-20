@@ -60,17 +60,17 @@ export default class CommonConstants {
   /**
    * count.
    */
-  static readonly COUNT: number = 6;
+  static readonly COUNT: number = 12;
 
   /**
    * Small circle count.
    */
-  static readonly SMALL_CIRCLE_COUNT: number = 8;
+  static readonly SMALL_CIRCLE_COUNT: number = 12;
 
   /**
    * Image size.
    */
-  static readonly IMAGE_SIZE: number = 40;
+  static readonly IMAGE_SIZE: number = 30;
 
   /**
    * Prize angle.
@@ -160,22 +160,24 @@ export default class CommonConstants {
   /**
    * Image dx ratios.
    */
-  static readonly IMAGE_DX_RATIOS: number = 0.114;
+  // static readonly IMAGE_DX_RATIOS: number = 0.114;
+  static readonly IMAGE_DX_RATIOS: number = 0.120;
 
   /**
    * Image dy ratios.
    */
-  static readonly IMAGE_DY_RATIOS: number = 0.052;
+  // static readonly IMAGE_DY_RATIOS: number = 0.052;
+  static readonly IMAGE_DY_RATIOS: number = 0.055;
 
   /**
    * Arc text start angle.
    */
-  static readonly ARC_START_ANGLE: number = 34;
+  static readonly ARC_START_ANGLE: number = 22;
 
   /**
    * Arc text end angle.
    */
-  static readonly ARC_END_ANGLE: number = 26;
+  static readonly ARC_END_ANGLE: number = 8;
 
   /**
    * Text align.
@@ -202,5 +204,11 @@ export enum EnumeratedValue {
   THREE = 3,
   FOUR = 4,
   FIVE = 5,
-  SIX = 6
+  SIX = 6,
+  SEVEN = 7,
+  EIGHT = 8,
+  NINE = 9,
+  TEN = 10,
+  ELEVEN = 11,
+  TWELVE = 12,
 }

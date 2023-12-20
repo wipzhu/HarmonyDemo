@@ -58,6 +58,21 @@ export default class ColorConstants {
   static readonly ARC_GREEN_COLOR: string = '#ECF9C7'
 
   /**
+   * Arc blue color.
+   */
+  static readonly ARC_BLUE_COLOR: string = '#C7EFF9'
+
+  /**
+   * Arc purple color.
+   */
+  static readonly ARC_PURPLE_COLOR: string = '#DEC7F9'
+
+  /**
+   * Arc orange color.
+   */
+  static readonly ARC_ORANGE_COLOR: string = '#F9E1C7'
+
+  /**
    * Text color.
    */
   static readonly TEXT_COLOR: string = '#ED6E21';
