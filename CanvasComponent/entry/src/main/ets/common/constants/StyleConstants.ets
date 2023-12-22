@@ -28,6 +28,16 @@ export default class StyleConstants {
   static readonly FULL_PERCENT: string = '100%';
 
   /**
+   * Sixty percent.
+   */
+  static readonly SIXTY_PERCENT: string = '60%';
+
+  /**
+   * Forty percent.
+   */
+  static readonly FORTY_PERCENT: string = '40%';
+
+  /**
    * Background image size.
    */
   static readonly BACKGROUND_IMAGE_SIZE: string = '38.7%';
@@ -35,15 +45,22 @@ export default class StyleConstants {
   /**
    * Center circle image width.
    */
-  static readonly CENTER_IMAGE_WIDTH: string = '19.3%';
+  // static readonly CENTER_IMAGE_WIDTH: string = '19.3%';
+  static readonly CENTER_IMAGE_WIDTH: string = '70vp';
 
   /**
    * Center circle image height.
    */
-  static readonly CENTER_IMAGE_HEIGHT: string = '10.6%';
+  // static readonly CENTER_IMAGE_HEIGHT: string = '10.6%';
+  static readonly CENTER_IMAGE_HEIGHT: string = '80vp';
 
   /**
    * Arc text size.
    */
   static readonly ARC_TEXT_SIZE: number = fp2px(14);
+
+  /**
+   * Input border radius.
+   */
+  static readonly INPUT_BORDER_RADIUS: string = '10vp';
 }

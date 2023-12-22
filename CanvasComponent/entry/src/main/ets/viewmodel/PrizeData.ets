@@ -20,7 +20,8 @@ export default class PrizeData {
   /**
    * The prize message.
    */
-  message?: Resource;
+  // message?: Resource;
+  message?: string;
 
   /**
    * Image src.

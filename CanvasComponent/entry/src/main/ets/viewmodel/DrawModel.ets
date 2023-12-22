@@ -28,9 +28,11 @@ import CheckEmptyUtils from '../common/utils/CheckEmptyUtils';
 export default class DrawModel {
   private startAngle: number = 0;
   private avgAngle: number = CommonConstants.CIRCLE / CommonConstants.COUNT;
-  public screenWidth: number = 0;
-  public screenHeight: number = 0;
+  private arcRadius: number = 0;
+  private screenWidth: number = 0;
+  private screenHeight: number = 0;
   private canvasContext?: CanvasRenderingContext2D;
+  private prizePool: Array<object> = []
 
   /**
    * Draw the raffle round turntable.
@@ -39,20 +41,20 @@ export default class DrawModel {
    * @param screenWidth screenWidth.
    * @param screenHeight screenHeight.
    */
-  draw(canvasContext: CanvasRenderingContext2D, screenWidth: number, screenHeight: number) {
+  draw(canvasContext: CanvasRenderingContext2D, screenWidth: number, screenHeight: number, prizePool: Array<object>) {
     if (CheckEmptyUtils.isEmptyObj(canvasContext)) {
       Logger.error('[DrawModel][draw] canvasContext is empty.');
       return;
     }
+    this.prizePool = prizePool
     this.canvasContext = canvasContext;
     this.screenWidth = screenWidth;
     this.screenHeight = screenHeight;
-    // console.log("传入屏幕宽度：" + screenWidth)
-    // console.log("传入屏幕高度：" + screenHeight)
+    this.arcRadius = screenWidth * CommonConstants.INNER_ARC_RATIOS;
     this.canvasContext.clearRect(0, 0, this.screenWidth, this.screenHeight);
     // Translates the canvas along the X and Y axes by a specified distance.
     this.canvasContext.translate(this.screenWidth / CommonConstants.TWO,
-      this.screenHeight / CommonConstants.TWO);
+      this.screenHeight / CommonConstants.TEN * CommonConstants.THREE);
     // Painted outer disc petal.
     this.drawFlower();
     // Draw outer disc, small circle.
@@ -66,7 +68,7 @@ export default class DrawModel {
     // Draw the picture corresponding to the prize in the internal fan area.
     this.drawImage();
     this.canvasContext.translate(-this.screenWidth / CommonConstants.TWO,
-      -this.screenHeight / CommonConstants.TWO);
+      this.screenHeight / CommonConstants.TEN * CommonConstants.THREE);
   }
 
   /**
@@ -139,6 +141,7 @@ export default class DrawModel {
       Math.PI * CommonConstants.TWO), ColorConstants.INNER_CIRCLE_COLOR);
     this.fillArc(new FillArcData(0, 0, this.screenWidth * CommonConstants.INNER_WHITE_CIRCLE_RATIOS, 0,
       Math.PI * CommonConstants.TWO), ColorConstants.WHITE_COLOR);
+    this.canvasContext?.restore();
   }
 
   /**
@@ -153,14 +156,14 @@ export default class DrawModel {
     ColorConstants.ARC_GREEN_COLOR, ColorConstants.ARC_BLUE_COLOR,
     ColorConstants.ARC_PURPLE_COLOR, ColorConstants.ARC_ORANGE_COLOR,
     ];
-    let radius = this.screenWidth * CommonConstants.INNER_ARC_RATIOS;
     for (let i = 0; i < CommonConstants.COUNT; i++) {
-      this.fillArc(new FillArcData(0, 0, radius, this.startAngle * Math.PI / CommonConstants.HALF_CIRCLE,
+      this.fillArc(new FillArcData(0, 0, this.arcRadius, this.startAngle * Math.PI / CommonConstants.HALF_CIRCLE,
         (this.startAngle + this.avgAngle) * Math.PI / CommonConstants.HALF_CIRCLE), colors[i]);
       this.canvasContext?.lineTo(0, 0);
       this.canvasContext?.fill();
       this.startAngle += this.avgAngle;
     }
+    this.canvasContext?.restore();
   }
 
   /**
@@ -173,28 +176,15 @@ export default class DrawModel {
       this.canvasContext.fillStyle = ColorConstants.TEXT_COLOR;
       this.canvasContext.font = StyleConstants.ARC_TEXT_SIZE + CommonConstants.CANVAS_FONT;
     }
-    let textArrays = [
-    $r('app.string.text_beer'),
-    $r('app.string.text_hamburger'),
-    $r('app.string.text_cake'),
-    $r('app.string.text_beer'),
-    $r('app.string.text_cake'),
-    $r('app.string.text_watermelon'),
-    $r('app.string.text_hamburger'),
-    $r('app.string.text_beer'),
-    $r('app.string.text_cake'),
-    $r('app.string.text_hamburger'),
-    $r('app.string.text_beer'),
-    $r('app.string.text_watermelon')
-    ];
     let arcTextStartAngle = CommonConstants.ARC_START_ANGLE;
     let arcTextEndAngle = CommonConstants.ARC_END_ANGLE;
     for (let i = 0; i < CommonConstants.COUNT; i++) {
-      this.drawCircularText(this.getResourceString(textArrays[i]),
+      this.drawCircularText(this.prizePool[i]['name'],
         (this.startAngle + arcTextStartAngle) * Math.PI / CommonConstants.HALF_CIRCLE,
         (this.startAngle + arcTextEndAngle) * Math.PI / CommonConstants.HALF_CIRCLE);
       this.startAngle += this.avgAngle;
     }
+    this.canvasContext?.restore();
   }
 
   /**
@@ -238,7 +228,7 @@ export default class DrawModel {
     let circleText: CircleText = {
       x: 0,
       y: 0,
-      radius: this.screenWidth * CommonConstants.INNER_ARC_RATIOS
+      radius: this.arcRadius
     };
     // The radius of the circle.
     let radius = circleText.radius - circleText.radius / CommonConstants.COUNT;
@@ -253,8 +243,8 @@ export default class DrawModel {
       this.canvasContext?.save();
       this.canvasContext?.beginPath();
       this.canvasContext?.translate(circleText.x + Math.cos(angle) * radius,
-        circleText.y - Math.sin(angle) * radius);
-      this.canvasContext?.rotate(Math.PI / CommonConstants.TWO - angle);
+        circleText.y + Math.sin(angle) * radius);
+      this.canvasContext?.rotate(Math.PI / CommonConstants.TWO + angle);
       this.canvasContext?.fillText(character, 0, 0);
       angle -= angleDecrement;
       index++;
@@ -266,29 +256,21 @@ export default class DrawModel {
    * Draw the picture corresponding to the prize in the internal fan area.
    */
   drawImage() {
-    let beginAngle = this.startAngle;
-    let imageSrc = [
-      CommonConstants.BEER_IMAGE_URL, CommonConstants.HAMBURG_IMAGE_URL,
-      CommonConstants.CAKE_IMAGE_URL, CommonConstants.BEER_IMAGE_URL,
-      CommonConstants.CAKE_IMAGE_URL, CommonConstants.WATERMELON_IMAGE_URL,
-      CommonConstants.HAMBURG_IMAGE_URL, CommonConstants.BEER_IMAGE_URL,
-      CommonConstants.CAKE_IMAGE_URL, CommonConstants.HAMBURG_IMAGE_URL,
-      CommonConstants.BEER_IMAGE_URL, CommonConstants.WATERMELON_IMAGE_URL
-    ];
-    for (let i = 0; i < CommonConstants.COUNT; i++) {
-      let image = new ImageBitmap(imageSrc[i]);
-      this.canvasContext?.save();
-      this.canvasContext?.rotate(beginAngle * Math.PI / CommonConstants.HALF_CIRCLE);
-      // console.log("屏幕宽度=" + this.screenWidth)
-      // console.log("屏幕高度=" + this.screenHeight)
-      // console.log("屏幕dx=" + this.screenWidth * CommonConstants.IMAGE_DX_RATIOS)
-      // console.log("屏幕dy=" + CommonConstants.IMAGE_DY_RATIOS)
-      this.canvasContext?.drawImage(image, this.screenWidth * CommonConstants.IMAGE_DX_RATIOS,
-        this.screenHeight * CommonConstants.IMAGE_DY_RATIOS, CommonConstants.IMAGE_SIZE,
+    let beginAngle = 0
+    for (let i = 0; i < this.prizePool.length; i++) {
+
+      let image = new ImageBitmap(this.prizePool[i]['imgSrc']);
+      this.canvasContext?.save()
+
+      this.canvasContext?.rotate(beginAngle * Math.PI / CommonConstants.HALF_CIRCLE)
+
+      this.canvasContext?.drawImage(image, this.arcRadius * CommonConstants.IMAGE_DX_RATIOS,
+        this.arcRadius * CommonConstants.IMAGE_DY_RATIOS, CommonConstants.IMAGE_SIZE,
         CommonConstants.IMAGE_SIZE);
-      // console.log("屏幕开始角度：" + beginAngle)
-      beginAngle += this.avgAngle;
-      this.canvasContext?.restore();
+
+      beginAngle += this.avgAngle
+
+      this.canvasContext?.restore()
     }
   }
 
@@ -313,36 +295,9 @@ export default class DrawModel {
    */
   getPrizeData(scopeNum: number): PrizeData {
     let prizeData: PrizeData = new PrizeData();
-    switch (scopeNum) {
-      case EnumeratedValue.SIX:
-      case EnumeratedValue.TWELVE:
-        prizeData.message = $r('app.string.prize_text_watermelon');
-        prizeData.imageSrc = CommonConstants.WATERMELON_IMAGE_URL;
-        break;
-      case EnumeratedValue.ONE:
-      case EnumeratedValue.FOUR:
-      case EnumeratedValue.EIGHT:
-      case EnumeratedValue.ELEVEN:
-        prizeData.message = $r('app.string.prize_text_beer');
-        prizeData.imageSrc = CommonConstants.BEER_IMAGE_URL;
-        break;
-      case EnumeratedValue.THREE:
-      case EnumeratedValue.FIVE:
-      case EnumeratedValue.NINE:
-        prizeData.message = $r('app.string.prize_text_cake');
-        prizeData.imageSrc = CommonConstants.CAKE_IMAGE_URL;
-        break;
-      case EnumeratedValue.TWO:
-      case EnumeratedValue.SEVEN:
-      case EnumeratedValue.TEN:
-        prizeData.message = $r('app.string.prize_text_hamburger');
-        prizeData.imageSrc = CommonConstants.HAMBURG_IMAGE_URL;
-        break;
-      default:
-        prizeData.message = $r('app.string.prize_text_smile');
-        prizeData.imageSrc = CommonConstants.SMILE_IMAGE_URL;
-        break;
-    }
+    // console.log("输出奖品："+ this.prizePool[scopeNum]['name']);
+    prizeData.message = this.prizePool[scopeNum]['tips']
+    prizeData.imageSrc = this.prizePool[scopeNum]['imgSrc']
     return prizeData;
   }
 }

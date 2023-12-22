@@ -70,7 +70,7 @@ export default class CommonConstants {
   /**
    * Image size.
    */
-  static readonly IMAGE_SIZE: number = 30;
+  static readonly IMAGE_SIZE: number = 25;
 
   /**
    * Prize angle.
@@ -111,6 +111,11 @@ export default class CommonConstants {
    * Six.
    */
   static readonly SIX: number = 6;
+
+  /**
+   * TEN.
+   */
+  static readonly TEN: number = 10;
 
   /**
    * Flower point y ratios.
@@ -161,23 +166,23 @@ export default class CommonConstants {
    * Image dx ratios.
    */
   // static readonly IMAGE_DX_RATIOS: number = 0.114;
-  static readonly IMAGE_DX_RATIOS: number = 0.120;
+  static readonly IMAGE_DX_RATIOS: number = 0.55;
 
   /**
    * Image dy ratios.
    */
-  // static readonly IMAGE_DY_RATIOS: number = 0.052;
-  static readonly IMAGE_DY_RATIOS: number = 0.055;
+  static readonly IMAGE_DY_RATIOS: number = 0.08;
+  // static readonly IMAGE_DY_RATIOS: number = 0;
 
   /**
    * Arc text start angle.
    */
-  static readonly ARC_START_ANGLE: number = 22;
+  static readonly ARC_START_ANGLE: number = 8;
 
   /**
    * Arc text end angle.
    */
-  static readonly ARC_END_ANGLE: number = 8;
+  static readonly ARC_END_ANGLE: number = 22;
 
   /**
    * Text align.
