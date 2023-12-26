@@ -198,6 +198,9 @@ export default class CommonConstants {
    * Canvas font.
    */
   static readonly CANVAS_FONT: string = 'px sans-serif';
+
+  static readonly PROMPT_BOTTOM = '70vp';
+  static readonly PROMPT_BOTTOM_MAX = '280vp';
 }
 
 /**

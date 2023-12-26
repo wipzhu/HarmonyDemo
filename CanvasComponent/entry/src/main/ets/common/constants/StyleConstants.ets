@@ -26,16 +26,42 @@ export default class StyleConstants {
    * One hundred percent.
    */
   static readonly FULL_PERCENT: string = '100%';
-
+  /**
+   * Ninety percent.
+   */
+  static readonly NINETY_PERCENT: string = '90%';
+  /**
+   * Eighty percent.
+   */
+  static readonly EIGHTY_PERCENT: string = '80%';
+  /**
+   * Seventy percent.
+   */
+  static readonly SEVENTY_PERCENT: string = '70%';
   /**
    * Sixty percent.
    */
   static readonly SIXTY_PERCENT: string = '60%';
-
+  /**
+   * Fifty percent.
+   */
+  static readonly FIFTY_PERCENT: string = '50%';
   /**
    * Forty percent.
    */
   static readonly FORTY_PERCENT: string = '40%';
+  /**
+   * Thirty percent.
+   */
+  static readonly THIRTY_PERCENT: string = '30%';
+  /**
+   * Twenty percent.
+   */
+  static readonly TWENTY_PERCENT: string = '20%';
+  /**
+   * Ten percent.
+   */
+  static readonly TEN_PERCENT: string = '10%';
 
   /**
    * Background image size.
@@ -57,10 +83,11 @@ export default class StyleConstants {
   /**
    * Arc text size.
    */
-  static readonly ARC_TEXT_SIZE: number = fp2px(14);
+  static readonly ARC_TEXT_SIZE: number = fp2px(12);
 
   /**
    * Input border radius.
    */
   static readonly INPUT_BORDER_RADIUS: string = '10vp';
+  static readonly INPUT_ROW_HEIGHT: string = '30vp';
 }

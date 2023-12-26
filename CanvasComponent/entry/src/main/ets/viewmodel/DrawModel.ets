@@ -259,7 +259,7 @@ export default class DrawModel {
     let beginAngle = 0
     for (let i = 0; i < this.prizePool.length; i++) {
 
-      let image = new ImageBitmap(this.prizePool[i]['imgSrc']);
+      let image = new ImageBitmap(this.prizePool[i]['image_src']);
       this.canvasContext?.save()
 
       this.canvasContext?.rotate(beginAngle * Math.PI / CommonConstants.HALF_CIRCLE)
@@ -295,9 +295,8 @@ export default class DrawModel {
    */
   getPrizeData(scopeNum: number): PrizeData {
     let prizeData: PrizeData = new PrizeData();
-    // console.log("输出奖品："+ this.prizePool[scopeNum]['name']);
-    prizeData.message = this.prizePool[scopeNum]['tips']
-    prizeData.imageSrc = this.prizePool[scopeNum]['imgSrc']
+    prizeData.message = this.prizePool[scopeNum]['tip_message']
+    prizeData.imageSrc = this.prizePool[scopeNum]['image_src']
     return prizeData;
   }
 }

@@ -20,6 +20,7 @@ import PrizeDialog from '../view/PrizeDialog';
 import PrizeData from '../viewmodel/PrizeData';
 import StyleConstants from '../common/constants/StyleConstants';
 import CommonConstants from '../common/constants/CommonConstants';
+import promptAction from '@ohos.promptAction'
 
 // Get context.
 let context = getContext(this);
@@ -31,37 +32,43 @@ struct Index {
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
   @State drawModel: DrawModel = new DrawModel();
-  @State screenWidth: number = 0;
-  @State screenHeight: number = 0;
-  @State rotateDegree: number = 0;
-  @State enableFlag: boolean = true;
+  @State screenWidth: number = 0
+  @State screenHeight: number = 0
+  @State rotateDegree: number = 0
+  @State enableFlag: boolean = true
+  @State inputName: string = ''
   @State prizeData: PrizeData = new PrizeData(); // 抽中的奖品
   @State prizePool: Array<object> = [] // 奖池
   private prizeInfoMap: Array<object> = [ //奖品信息
     {
+      "id": 1,
       "name": "汉堡",
-      "tips": "恭喜，抽中奖品汉堡",
-      "imgSrc": CommonConstants.HAMBURG_IMAGE_URL,
+      "tip_message": "恭喜，抽中奖品汉堡",
+      "image_src": CommonConstants.HAMBURG_IMAGE_URL,
     },
     {
+      "id": 2,
       "name": "蛋糕",
-      "tips": "恭喜，抽中奖品蛋糕",
-      "imgSrc": CommonConstants.CAKE_IMAGE_URL,
+      "tip_message": "恭喜，抽中奖品蛋糕",
+      "image_src": CommonConstants.CAKE_IMAGE_URL,
     },
     {
+      "id": 3,
       "name": "啤酒",
-      "tips": "恭喜，抽中奖品啤酒",
-      "imgSrc": CommonConstants.BEER_IMAGE_URL,
+      "tip_message": "恭喜，抽中奖品啤酒",
+      "image_src": CommonConstants.BEER_IMAGE_URL,
     },
     {
+      "id": 4,
       "name": "西瓜",
-      "tips": "恭喜，抽中奖品西瓜",
-      "imgSrc": CommonConstants.WATERMELON_IMAGE_URL,
+      "tip_message": "恭喜，抽中奖品西瓜",
+      "image_src": CommonConstants.WATERMELON_IMAGE_URL,
     },
     {
+      "id": 5,
       "name": "谢谢",
-      "tips": "Sorry,再来一次吧",
-      "imgSrc": CommonConstants.SMILE_IMAGE_URL,
+      "tip_message": "Sorry,再来一次吧",
+      "image_src": CommonConstants.SMILE_IMAGE_URL,
     }
   ]
   // private prizeInfoMap: Array<object> = [ //奖品信息
@@ -94,7 +101,11 @@ struct Index {
   dialogController: CustomDialogController = new CustomDialogController({
     builder: PrizeDialog({
       prizeData: $prizeData,
-      enableFlag: $enableFlag
+      enableFlag: $enableFlag,
+      tryAgain: () => {
+        this.enableFlag = !this.enableFlag;
+        this.startAnimator()
+      }
     }),
     autoCancel: false
   });
@@ -111,7 +122,7 @@ struct Index {
         Logger.error('Failed to obtain the window size. Cause: ' + JSON.stringify(error));
       })
 
-    // 填充
+    // 填充奖池
     this.fillPrizePool()
   }
 
@@ -151,26 +162,33 @@ struct Index {
         height: StyleConstants.BACKGROUND_IMAGE_SIZE
       })
 
-      Flex({ direction: FlexDirection.Row }) {
-        TextInput({ placeholder: "点击编辑奖项" })
-          .width('80%')
-          // .backgroundColor(Color.Green)
-          .placeholderColor(Color.Gray)
-          .borderRadius(StyleConstants.INPUT_BORDER_RADIUS)
-
-        Button("提交")
-          .type(ButtonType.Normal)
-          .borderRadius(15)
-          .width('20%')
-          .margin({ left: 20 })
-          .onClick(() => {
-            // this.fillPrizePool();
-          })
-
-      }
-      // .backgroundColor(Color.Blue)
-      .height(StyleConstants.FORTY_PERCENT)
-      .padding({ top: 20, left: 10, bottom: 20, right: 10 })
+      // Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
+      //   TextInput({ placeholder: "点击编辑奖项" })
+      //     .width(StyleConstants.EIGHTY_PERCENT)
+      //     // .backgroundColor(Color.Green)
+      //     .placeholderColor(Color.Gray)
+      //     .borderRadius(StyleConstants.INPUT_BORDER_RADIUS)
+      //     .onChange((value: string) => {
+      //       this.inputName = value;
+      //     })
+      //
+      //   Button("添加")
+      //     .type(ButtonType.Normal)
+      //     .borderRadius(15)
+      //     .width(StyleConstants.TWENTY_PERCENT)
+      //     .margin({ left: 20 })
+      //     .onClick(() => {
+      //       if (this.inputName.length === 0) {
+      //         promptAction.showToast({ message: "请输入奖项", bottom: CommonConstants.PROMPT_BOTTOM_MAX });
+      //         return false
+      //       }
+      //       promptAction.showToast({ message: this.inputName, bottom: CommonConstants.PROMPT_BOTTOM_MAX });
+      //     })
+      //
+      // }
+      // // .backgroundColor(Color.Blue)
+      // .height(StyleConstants.TEN_PERCENT)
+      // .padding({ top: 20, left: 10, bottom: 20, right: 10 })
     }
   }
 
@@ -202,11 +220,48 @@ struct Index {
    * 填充奖池
    */
   fillPrizePool() {
-    for (let index = 0; index < CommonConstants.COUNT; index++) {
+    for (let i = 0; i < CommonConstants.COUNT; i++) {
       // 获取一个随机数
       let randomIndex = Math.floor(Math.random() * this.prizeInfoMap.length)
       // console.log("输出随机数：" + randomIndex)
-      this.prizePool[index] = this.prizeInfoMap[randomIndex];
+      this.prizePool[i] = this.prizeInfoMap[randomIndex];
     }
+  }
+}
+
+@Component
+export struct prizeItem {
+  image_src: string
+  name: string
+
+  build() {
+    Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
+      Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.SpaceAround,alignItems: ItemAlign.Center  }) {
+
+        Image(this.image_src)
+          .width(30)
+          .height(30)
+          .alignSelf(ItemAlign.Center)
+          .backgroundColor(Color.Blue)
+
+        Text(this.name)
+          .fontSize(15)
+          .padding(5)
+          .textAlign(TextAlign.Center)
+          .backgroundColor(Color.Red)
+
+      }
+      .width(StyleConstants.SIXTY_PERCENT)
+      // .backgroundColor(Color.Blue)
+
+      Button("添加")
+        .type(ButtonType.Capsule)
+        .fontSize(12)
+        .padding(5)
+        .width(StyleConstants.TWENTY_PERCENT)
+        // .backgroundColor(Color.Red)
+    }
+    .margin({ top: 2, bottom: 2 })
+    // .backgroundColor(Color.Pink)
   }
 }
