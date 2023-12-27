@@ -23,6 +23,7 @@ export default struct PrizeDialog {
   @Link prizeData: PrizeData;
   @Link enableFlag: boolean;
   private controller?: CustomDialogController;
+  tryAgain?: () => void;
 
   build() {
     Column() {
@@ -45,15 +46,34 @@ export default struct PrizeDialog {
         .textAlign(TextAlign.Center)
         .margin({ bottom: $r('app.float.dialog_message_bottom') })
 
-      Button($r('app.string.text_confirm'))
-        .type(ButtonType.Capsule)
-        .width($r('app.float.dialog_button_width'))
-        .height($r('app.float.dialog_button_height'))
-        .margin({ bottom: $r('app.float.dialog_message_bottom') })
-        .onClick(() => {
-          this.controller?.close();
-          this.enableFlag = !this.enableFlag;
-        })
+      Row() {
+        Button($r('app.string.text_confirm'))
+          // .backgroundColor(Color.Green)
+          .type(ButtonType.Capsule)
+          .height($r('app.float.dialog_button_height'))
+          .width($r('app.float.dialog_button_width'))
+          .margin({ bottom: $r('app.float.dialog_message_bottom'), right: $r('app.float.dialog_message_bottom')})
+          .onClick(() => {
+            this.controller?.close();
+            this.enableFlag = !this.enableFlag;
+          })
+
+        Button($r('app.string.text_try_again'))
+          .backgroundColor(Color.Orange)
+          .type(ButtonType.Capsule)
+          .height($r('app.float.dialog_button_height'))
+          .width($r('app.float.dialog_button_width'))
+          .margin({ bottom: $r('app.float.dialog_message_bottom'), left: $r('app.float.dialog_message_bottom')})
+          .onClick(() => {
+            this.controller?.close();
+            this.enableFlag = !this.enableFlag;
+            this.tryAgain()
+          })
+      }
+      .align(Alignment.Center)
+      .justifyContent(FlexAlign.SpaceBetween)
+      // .padding(10)
+      .layoutWeight(1)
 
     }
     .backgroundColor($r('app.color.dialog_background'))

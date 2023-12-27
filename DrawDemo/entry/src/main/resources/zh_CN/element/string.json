@@ -17,6 +17,10 @@
       "value": "确定"
     },
     {
+      "name": "text_try_again",
+      "value": "再来一次"
+    },
+    {
       "name": "text_smile",
       "value": "谢谢"
     },

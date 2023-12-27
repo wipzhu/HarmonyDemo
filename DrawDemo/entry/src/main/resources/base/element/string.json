@@ -17,6 +17,10 @@
       "value": "Confirm"
     },
     {
+      "name": "text_try_again",
+      "value": "Try Again"
+    },
+    {
       "name": "text_smile",
       "value": "Thanks"
     },

@@ -1,0 +1,41 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_Rdb_com.example.rdb_240086000020497855.cer",
+          "storePassword": "0000001A61F4334C4710BC4D86C340E4DD3A90C7DDF5BC644EDEABAAFE488D9584AD43F9332B678E5519",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001A9480D1463A5B34E8CBC566BEAC6BD82FD36350E31E761989CB534FB0FE0A33BED6B0E35D675C",
+          "profile": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_Rdb_com.example.rdb_240086000020497855.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_Rdb_com.example.rdb_240086000020497855.p12"
+        }
+      }
+    ],
+    "compileSdkVersion": 9,
+    "compatibleSdkVersion": 9,
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
