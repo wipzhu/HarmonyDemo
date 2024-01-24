@@ -26,7 +26,7 @@ export default struct Home {
         .margin({ left: 5 })
         .onClick(() => {
           animateTo({
-            duration: 240,
+            duration: 50,
           }, () => {
             if (this.menuOpacity == 0) {
               this.menuOpacity = 1
