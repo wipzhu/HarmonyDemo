@@ -29,6 +29,11 @@ struct ShopPage {
       .layoutWeight(1)
       .onReachEnd(() => {
         console.log("触底了")
+        if (!this.hasMore) {
+          prompt.showToast({
+            message: "我是有底线的~"
+          })
+        }
         if (!this.isLoading && this.hasMore) {
           this.isLoading = true
           // 翻页

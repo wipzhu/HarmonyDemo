@@ -6,6 +6,10 @@ class ShopModel {
   page_no: number = 1
   page_size: number = 4
 
+  /**
+   * 基于ohos的http模块实现异步查询商铺
+   * @returns
+   */
   getShopListByHttp(): Promise<ShopInfo[]> {
     return new Promise((resolve, reject) => {
 
