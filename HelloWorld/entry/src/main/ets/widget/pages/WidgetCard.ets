@@ -73,10 +73,10 @@ struct WidgetCard {
           .width(this.FULL_WIDTH_PERCENT)
           .alignItems(HorizontalAlign.End)
           .backgroundImageSize(ImageSize.Cover)
-          .backgroundImage($r("app.media.ic_widget"), ImageRepeat.NoRepeat)
+          .backgroundImage($r("app.media.ggbond"), ImageRepeat.NoRepeat)
           .displayPriority(this.MINI_DISPLAY_PRIORITY)
         }
-        Image($r("app.media.ic_widget"))
+        Image($r("app.media.ggbond"))
           .width(this.FULL_WIDTH_PERCENT)
           .height(this.IMAGE_HEIGHT_PERCENT)
           .objectFit(ImageFit.Fill)

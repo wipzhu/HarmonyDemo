@@ -5,18 +5,18 @@ import IndexFontSizePanel from  '../views/IndexFontSizePanel'
 import PreferencesUtil from '../common/util/PreferencesUtil'
 
 const routers: RouterInfo[] = [
-  new RouterInfo('pages/ImagePage', '图片查看案例'),
-  new RouterInfo('pages/ItemPage', '商品列表案例'),
-  new RouterInfo('pages/StatePage', 'Jack和他的女友案例'),
-  new RouterInfo('pages/PropPage', '任务列表案例'),
-  new RouterInfo('pages/AnimationPage', '小鱼动画案例按钮版'),
-  new RouterInfo('pages/AnimationPage2', '小鱼动画案例摇杆版'),
-  new RouterInfo('pages/LifeCirclePage', '生命周期案例1'),
-  new RouterInfo('pages/TestPage1', '生命周期案例2'),
-  new RouterInfo('pages/DocumentListPage', 'UIAbility启动模式案例'),
+  // new RouterInfo('pages/ImagePage', '图片查看案例'),
+  // new RouterInfo('pages/ItemPage', '商品列表案例'),
+  // new RouterInfo('pages/StatePage', 'Jack和他的女友案例'),
+  // new RouterInfo('pages/PropPage', '任务列表案例'),
+  // new RouterInfo('pages/AnimationPage', '小鱼动画案例按钮版'),
+  // new RouterInfo('pages/AnimationPage2', '小鱼动画案例摇杆版'),
+  // new RouterInfo('pages/LifeCirclePage', '生命周期案例1'),
+  // new RouterInfo('pages/TestPage1', '生命周期案例2'),
+  // new RouterInfo('pages/DocumentListPage', 'UIAbility启动模式案例'),
   new RouterInfo('pages/ShopPage', '查询商铺案例'),
-  new RouterInfo('pages/TaskManagePage', '任务列表持久化案例'),
-  new RouterInfo('pages/NotificationPage', '通知案例'),
+  // new RouterInfo('pages/TaskManagePage', '任务列表持久化案例'),
+  // new RouterInfo('pages/NotificationPage', '通知案例'),
 ]
 
 @Entry

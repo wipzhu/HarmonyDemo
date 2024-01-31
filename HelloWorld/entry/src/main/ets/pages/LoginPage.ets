@@ -69,7 +69,7 @@ struct LoginPage {
 
   build() {
     Column() {
-      Image($r('app.media.icon'))
+      Image($r('app.media.ggbond'))
         .width($r('app.float.logo_image_size'))
         .height($r('app.float.logo_image_size'))
         .margin({ top: $r('app.float.logo_margin_top'), bottom: $r('app.float.logo_margin_bottom') })
