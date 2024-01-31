@@ -1,9 +1,10 @@
 {
   "src": [
+    "pages/Index",
     "pages/LoginPage",
     "pages/MainPage",
     "pages/Demo1",
-    "pages/Index",
-    "pages/ShopPage"
+    "pages/ShopPage",
+    "pages/TaskManagePage"
   ]
 }

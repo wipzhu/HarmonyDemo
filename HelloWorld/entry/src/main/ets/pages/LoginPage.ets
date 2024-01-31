@@ -1,6 +1,7 @@
 import router from '@ohos.router'
 import CommonConstants from '../common/constants/CommonConstants'
 import prompt from '@ohos.promptAction';
+import { Header } from '../common/components/CommonComponents';
 
 @Extend(TextInput) function inputStyle() {
   .placeholderColor($r('app.color.placeholder_color'))
@@ -69,6 +70,9 @@ struct LoginPage {
 
   build() {
     Column() {
+      // 1.顶部导航
+      Header()
+
       Image($r('app.media.ggbond'))
         .width($r('app.float.logo_image_size'))
         .height($r('app.float.logo_image_size'))

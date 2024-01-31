@@ -28,12 +28,12 @@ export default struct RouterItem{
       router.pushUrl(
         {
           url: this.r.url,
-          params: {id: this.i}
+          params: {id: this.i, title:this.r.title}
         },
         router.RouterMode.Single,
         err => {
           if(err){
-            console.log(`路由失败，errCode: ${err.code} errMsg:${err.message}`)
+            console.log('testTag', `路由失败，errCode: ${err.code} errMsg:${err.message}`)
           }
         }
       )

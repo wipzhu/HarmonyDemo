@@ -2,6 +2,7 @@ import ShopInfo from '../viewmodel/ShopInfo'
 import ShopItem from '../views/ShopItem'
 import ShopModel from '../model/ShopModel'
 import prompt from '@ohos.promptAction';
+import { Header } from '../common/components/CommonComponents';
 
 @Entry
 @Component
@@ -16,6 +17,9 @@ struct ShopPage {
 
   build() {
     Column() {
+      // // 1.顶部导航
+      Header()
+
       // Header({ title: '商铺列表' })
       List({space: 10}) {
         ForEach(this.shops, shop => {
