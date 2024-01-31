@@ -74,7 +74,7 @@
     },
     {
       "name": "login_progress_size",
-      "value": "30vp"
+      "value": "50vp"
     },
     {
       "name": "login_progress_margin_top",

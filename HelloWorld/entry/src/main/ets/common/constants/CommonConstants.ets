@@ -35,7 +35,7 @@ export default class CommonConstants {
   /**
    * Delay time of simulated login
    */
-  static readonly LOGIN_DELAY_TIME = 2000;
+  static readonly LOGIN_DELAY_TIME = 500;
 
   /**
    * Common Spacing of Components
