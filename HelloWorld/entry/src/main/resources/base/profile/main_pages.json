@@ -5,6 +5,7 @@
     "pages/MainPage",
     "pages/Demo1",
     "pages/ShopPage",
-    "pages/TaskManagePage"
+    "pages/TaskManagePage",
+    "pages/NotificationPage"
   ]
 }

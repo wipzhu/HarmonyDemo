@@ -5,13 +5,26 @@
         "name": "default",
         "type": "HarmonyOS",
         "material": {
-          "storePassword": "00000019F342F0BD202D724D8B167DC427F0FB1432D07F053DABF8A0B5A6C13A249806B58ABA99B1F7",
-          "certpath": "E:/www/Harmony/HelloWorld/WipzhuDemo.cer",
-          "keyAlias": "WipzhuDemoFaKey",
-          "keyPassword": "00000019301F58973D64EAD0A9CB0F1F395C7286CC72AE85C5B0B3220F92406ED04A6181A8D249E179",
-          "profile": "E:/www/Harmony/HelloWorld/WipzhuAppDemoRelease.p7b",
+          "certpath": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_HelloWorld_com.wipzhu.demo_240086000020497855.cer",
+          "storePassword": "0000001BC34D646FEE5808B4C01359C4D68FBD8B6D3C373EAA1638D4F6E975E2097EE6C2BBE5E8169D4724",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BF085E69EB2D44CC7EF397E02E2F8810A0C1BAA174DFD879AB46CE392D487065B1CCE6B026B820F",
+          "profile": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_HelloWorld_com.wipzhu.demo_240086000020497855.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "E:/www/Harmony/HelloWorld/WipzhuDemoFaKey.p12"
+          "storeFile": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_HelloWorld_com.wipzhu.demo_240086000020497855.p12"
+        }
+      },
+      {
+        "name": "testSign",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_HelloWorld_com.wipzhu.demo_240086000020497855.cer",
+          "storePassword": "0000001B5BDA4FB2A177BA7908414547FFBB1CCD374855F6E47AD2D93753E520E87996F4A02193B09B2BE9",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B02CD157312A7044BBF8FB1F41AA5065CEF1216B36F94B47E67663F2DC029F391B983269CA3D8D3",
+          "profile": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_HelloWorld_com.wipzhu.demo_240086000020497855.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_HelloWorld_com.wipzhu.demo_240086000020497855.p12"
         }
       }
     ],

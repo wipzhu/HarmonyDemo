@@ -17,7 +17,7 @@ const routers: RouterInfo[] = [
   // new RouterInfo('pages/DocumentListPage', 'UIAbility启动模式案例'),
   new RouterInfo('pages/ShopPage', '查询商铺案例'),
   new RouterInfo('pages/TaskManagePage', '任务列表持久化'),
-  // new RouterInfo('pages/NotificationPage', '通知案例'),
+  new RouterInfo('pages/NotificationPage', '系统通知案例'),
 ]
 
 @Entry
