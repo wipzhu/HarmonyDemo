@@ -1,0 +1,41 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_HeimaHealthy_com.itheima.healthy_240086000020497855.cer",
+          "storePassword": "000000196751B8C5155DF5DE8536DAD289253E049C55C6B0A7F29CE13221E177F4DD567F9CC6727CF4",
+          "keyAlias": "debugKey",
+          "keyPassword": "00000019BC0D03963DDB00AEEAB730E0AF838568BC239E4F7EAC402354C81EB6B787AC0D342B16192A",
+          "profile": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_HeimaHealthy_com.itheima.healthy_240086000020497855.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_HeimaHealthy_com.itheima.healthy_240086000020497855.p12"
+        }
+      }
+    ],
+    "compileSdkVersion": 9,
+    "compatibleSdkVersion": 9,
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
