@@ -1,11 +1,11 @@
 import TaskInfo from '../../viewmodel/TaskInfo'
 import TaskItem from './TaskItem'
-// import TaskModel from '../../model/TaskModel'
+import TaskModel from '../../model/TaskModel'
 
 @Component
 export default struct TaskList {
   // 总任务数量
-  @State idx:number = 1
+  @State idx: number = 1
   @Link totalTask: number
   @Link finishTask: number
   // 任务数组
@@ -13,19 +13,34 @@ export default struct TaskList {
 
   // 任务信息弹窗
   dialogController: CustomDialogController = new CustomDialogController({
-    builder: TaskInfoDialog({onTaskConfirm: this.handleAddTask.bind(this)}),
+    builder: TaskInfoDialog({ onTaskConfirm: this.handleAddTask.bind(this) }),
   })
 
   aboutToAppear() {
-    console.log('testTag', `初始化组件，查询任务列表`)
-    this.handleTaskChange()
+    TaskModel.getTaskList()
+      .then(tasks => {
+        this.tasks = tasks
+        // 更新任务状态
+        this.handleTaskChange()
+        console.log('testTag', '查询任务列表:' + JSON.stringify(tasks))
+      })
+      .catch(err => {
+        console.log('testTag', '查询任务列表出错!');
+      })
   }
 
-  handleAddTask(name: string){
-    console.log('testTag', `添加任务`)
+  handleAddTask(name: string) {
     this.dialogController.close()
-    this.tasks.push(new TaskInfo(this.idx++, name))
-    this.handleTaskChange()
+    TaskModel.addTask(name)
+      .then(id => {
+        console.log('testTag', `添加任务成功: id = `, id)
+        //回显到页面
+        this.tasks.push(new TaskInfo(id, name))
+        this.handleTaskChange()
+      })
+      .catch(err => {
+        console.log('testTag', '新增任务失败: name = ', name)
+      })
   }
 
   handleTaskChange() {
@@ -34,25 +49,25 @@ export default struct TaskList {
   }
 
   build() {
-    Column(){
+    Column() {
       // 1.新增任务按钮
       Button('新增任务')
         .width(200)
-        .margin({bottom: 10})
+        .margin({ bottom: 10 })
         .onClick(() => {
           // 打开新增表单对话框
           this.dialogController.open()
         })
 
       // 2.任务列表
-      List({space: 10}){
+      List({ space: 10 }) {
         ForEach(
           this.tasks,
           (item: TaskInfo, index) => {
-            ListItem(){
-              TaskItem({item: item, onTaskChange: this.handleTaskChange.bind(this)})
+            ListItem() {
+              TaskItem({ item: item, onTaskChange: this.handleTaskChange.bind(this) })
             }
-            .swipeAction({end: this.DeleteButton(index, item.id)})
+            .swipeAction({ end: this.DeleteButton(index, item.id) })
           }
         )
       }
@@ -62,8 +77,8 @@ export default struct TaskList {
     }
   }
 
-  @Builder DeleteButton(index: number, id: number){
-    Button(){
+  @Builder DeleteButton(index: number, id: number) {
+    Button() {
       Image($r('app.media.ic_public_delete_filled'))
         .fillColor(Color.White)
         .width(20)
@@ -74,25 +89,30 @@ export default struct TaskList {
     .backgroundColor(Color.Red)
     .margin(5)
     .onClick(() => {
-        this.tasks.splice(index, 1)
-        console.log('testTag', `尝试删除任务，index: ${index}`)
-        this.handleTaskChange()
+      TaskModel.deleteTaskById(id)
+        .then(() => {
+          this.tasks.splice(index, 1)
+          this.handleTaskChange()
+          console.log('testTag', `删除任务成功: id =`, id)
+        })
+        .catch(reason => {
+          console.log('testTag', '删除任务失败: id = ', id, JSON.stringify(reason))
+        })
     })
   }
 }
 
 @CustomDialog
-struct TaskInfoDialog{
-
+struct TaskInfoDialog {
   name: string = ''
-  onTaskConfirm : (name: string) => void
+  onTaskConfirm: (name: string) => void
   controller: CustomDialogController
 
-  build(){
-    Column({space: 20}){
-      TextInput({placeholder: '输入任务名'})
+  build() {
+    Column({ space: 20 }) {
+      TextInput({ placeholder: '输入任务名' })
         .onChange(val => this.name = val)
-      Row(){
+      Row() {
         Button('确定')
           .onClick(() => {
             this.onTaskConfirm(this.name)

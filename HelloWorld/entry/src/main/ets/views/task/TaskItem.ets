@@ -7,21 +7,32 @@ export default struct TaskItem {
   onTaskChange: (item: TaskInfo) => void
 
   build() {
-    Row(){
-      Text(String(this.item.id))
+    Row() {
+      // Text(String(this.item.id))
 
-      if(this.item.finished){
+      if (this.item.finished) {
         Text(this.item.name)
           .finishedTask()
-      }else{
+      } else {
         Text(this.item.name)
       }
       Checkbox()
         .select(this.item.finished)
         .onChange(async val => {
-          this.item.finished = val
-            // 2.更新已完成任务数量
-          this.onTaskChange(this.item)
+
+          TaskModel.updateTaskStatus(this.item.id, val)
+            .then(() => {
+              // 1.更新当前任务状态
+              this.item.finished = val
+              // 2.更新已完成任务数量
+              console.log('testTag', '任务详情:', JSON.stringify(this.item))
+              this.onTaskChange(this.item)
+              console.log('testTag', '更新任务成功: id =', this.item.id, val)
+            })
+            .catch(reason => {
+              console.log('testTag', '更新任务状态失败: id = ', this.item.id, JSON.stringify(reason))
+            })
+
         })
     }
     .card()
@@ -30,16 +41,16 @@ export default struct TaskItem {
 }
 
 // 任务完成样式
-@Extend(Text) function finishedTask(){
-  .decoration({type:TextDecorationType.LineThrough})
+@Extend(Text) function finishedTask() {
+  .decoration({ type: TextDecorationType.LineThrough })
   .fontColor('#B1B2B1')
 }
 
 // 统一的卡片样式
-@Styles function card(){
+@Styles function card() {
   .width('95%')
   .padding(20)
   .backgroundColor(Color.White)
   .borderRadius(15)
-  .shadow({radius: 6, color: '#1F000000', offsetX: 2, offsetY: 4})
+  .shadow({ radius: 6, color: '#1F000000', offsetX: 2, offsetY: 4 })
 }
