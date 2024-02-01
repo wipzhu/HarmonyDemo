@@ -1,0 +1,41 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_WipzhuHealthy_com.wipzhu.healthy_240086000020497855.cer",
+          "storePassword": "00000019F42F4C9DDEE22E4E5B70E649BC7A4238AF76086EA9498D41E60F1DE6E4D6302CB5444308ED",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001930FDE99A1B103053BF14679EDCB55E39D0B1D1DA61AC83A464188470A3ED6C7DBC90D88729",
+          "profile": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_WipzhuHealthy_com.wipzhu.healthy_240086000020497855.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\wipzh\\.ohos\\config\\auto_debug_WipzhuHealthy_com.wipzhu.healthy_240086000020497855.p12"
+        }
+      }
+    ],
+    "compileSdkVersion": 9,
+    "compatibleSdkVersion": 9,
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
