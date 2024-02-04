@@ -1,4 +1,4 @@
-export class ColumnInfo{
+export interface ColumnInfo{
   name: string
   columnName: string
   type: ColumnType

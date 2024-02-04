@@ -1,7 +1,7 @@
-import GroupInfo from '../viewmodel/GroupInfo'
-import ItemCategory from '../viewmodel/ItemCategory'
 import RecordItem from '../viewmodel/RecordItem'
+import ItemCategory from '../viewmodel/ItemCategory'
 import { FoodCategories, FoodCategoryEnum, WorkoutCategories, WorkoutCategoryEnum } from './ItemCategoryModel'
+import GroupInfo from '../viewmodel/GroupInfo'
 
 const foods: RecordItem[] = [
   new RecordItem(0, '米饭',$r('app.media.rice'),FoodCategoryEnum.STAPLE, '碗',  209, 46.6, 4.7, 0.5),
@@ -30,49 +30,45 @@ const foods: RecordItem[] = [
 ]
 
 const workouts: RecordItem[] = [
-  new RecordItem(0, '散步',$r('app.media.ic_walk'), WorkoutCategoryEnum.WALKING, '小时', 111),
-  new RecordItem(1, '快走',$r('app.media.ic_walk'), WorkoutCategoryEnum.WALKING, '小时',  343),
-  new RecordItem(2, '慢跑',$r('app.media.ic_running'), WorkoutCategoryEnum.RUNNING, '小时',  472),
-  new RecordItem(3, '快跑',$r('app.media.ic_running'), WorkoutCategoryEnum.RUNNING, '小时',  652),
-  new RecordItem(4, '自行车',$r('app.media.ic_ridding'), WorkoutCategoryEnum.RIDING, '小时',  497),
-  new RecordItem(5, '动感单车',$r('app.media.ic_ridding'), WorkoutCategoryEnum.RIDING, '小时',  587),
-  new RecordItem(6, '瑜伽',$r('app.media.ic_aerobics'), WorkoutCategoryEnum.AEROBICS, '小时',  172),
-  new RecordItem(7, '健身操',$r('app.media.ic_aerobics'), WorkoutCategoryEnum.AEROBICS, '小时',  429),
-  new RecordItem(8, '游泳',$r('app.media.ic_swimming'), WorkoutCategoryEnum.SWIMMING, '小时',  472),
-  new RecordItem(9, '冲浪',$r('app.media.ic_swimming'), WorkoutCategoryEnum.SWIMMING, '小时',  429),
-  new RecordItem(10, '篮球',$r('app.media.ic_basketball'), WorkoutCategoryEnum.BALLGAME, '小时',  472),
-  new RecordItem(11, '足球',$r('app.media.ic_football'), WorkoutCategoryEnum.BALLGAME, '小时',  515),
-  new RecordItem(12, '排球',$r("app.media.ic_volleyball"), WorkoutCategoryEnum.BALLGAME, '小时',  403),
-  new RecordItem(13, '羽毛球',$r("app.media.ic_badminton"), WorkoutCategoryEnum.BALLGAME, '小时',  386),
-  new RecordItem(14, '乒乓球',$r("app.media.ic_table_tennis"), WorkoutCategoryEnum.BALLGAME, '小时',  257),
-  new RecordItem(15, '哑铃飞鸟',$r("app.media.ic_dumbbell"), WorkoutCategoryEnum.STRENGTH, '小时',  343),
-  new RecordItem(16, '哑铃卧推',$r("app.media.ic_dumbbell"), WorkoutCategoryEnum.STRENGTH, '小时',  429),
-  new RecordItem(17, '仰卧起坐',$r("app.media.ic_sit_up"), WorkoutCategoryEnum.STRENGTH, '小时',  515),
+  new RecordItem(10000, '散步',$r('app.media.ic_walk'), WorkoutCategoryEnum.WALKING, '小时', 111),
+  new RecordItem(10001, '快走',$r('app.media.ic_walk'), WorkoutCategoryEnum.WALKING, '小时',  343),
+  new RecordItem(10002, '慢跑',$r('app.media.ic_running'), WorkoutCategoryEnum.RUNNING, '小时',  472),
+  new RecordItem(10003, '快跑',$r('app.media.ic_running'), WorkoutCategoryEnum.RUNNING, '小时',  652),
+  new RecordItem(10004, '自行车',$r('app.media.ic_ridding'), WorkoutCategoryEnum.RIDING, '小时',  497),
+  new RecordItem(10005, '动感单车',$r('app.media.ic_ridding'), WorkoutCategoryEnum.RIDING, '小时',  587),
+  new RecordItem(10006, '瑜伽',$r('app.media.ic_aerobics'), WorkoutCategoryEnum.AEROBICS, '小时',  172),
+  new RecordItem(10007, '健身操',$r('app.media.ic_aerobics'), WorkoutCategoryEnum.AEROBICS, '小时',  429),
+  new RecordItem(10008, '游泳',$r('app.media.ic_swimming'), WorkoutCategoryEnum.SWIMMING, '小时',  472),
+  new RecordItem(10009, '冲浪',$r('app.media.ic_swimming'), WorkoutCategoryEnum.SWIMMING, '小时',  429),
+  new RecordItem(10010, '篮球',$r('app.media.ic_basketball'), WorkoutCategoryEnum.BALLGAME, '小时',  472),
+  new RecordItem(10011, '足球',$r('app.media.ic_football'), WorkoutCategoryEnum.BALLGAME, '小时',  515),
+  new RecordItem(10012, '排球',$r("app.media.ic_volleyball"), WorkoutCategoryEnum.BALLGAME, '小时',  403),
+  new RecordItem(10013, '羽毛球',$r("app.media.ic_badminton"), WorkoutCategoryEnum.BALLGAME, '小时',  386),
+  new RecordItem(10014, '乒乓球',$r("app.media.ic_table_tennis"), WorkoutCategoryEnum.BALLGAME, '小时',  257),
+  new RecordItem(10015, '哑铃飞鸟',$r("app.media.ic_dumbbell"), WorkoutCategoryEnum.STRENGTH, '小时',  343),
+  new RecordItem(10016, '哑铃卧推',$r("app.media.ic_dumbbell"), WorkoutCategoryEnum.STRENGTH, '小时',  429),
+  new RecordItem(10017, '仰卧起坐',$r("app.media.ic_sit_up"), WorkoutCategoryEnum.STRENGTH, '小时',  515),
 ]
 
 class ItemModel{
-  /**
-   * 查询所有记录项
-   * @param isFood 是否查询食物，true：食物；false：运动
-   * @returns
-   */
+
+  getById(id: number, isFood: boolean = true){
+    return isFood ? foods[id] : workouts[id - 10000]
+  }
+
   list(isFood: boolean = true): RecordItem[]{
     return isFood ? foods : workouts
   }
 
-  /**
-   * 按照记录项类型对记录项分组并返回
-   * @param isFood
-   * @returns
-   */
-  listItemGroupByCategory(isFood: boolean = true): GroupInfo[]{
-    // 1.判断要查询的是食物还是运动
-    let items = isFood ? foods : workouts
+  listItemGroupByCategory(isFood: boolean = true){
+    // 1.判断要处理的是食物还是运动
     let categories = isFood ? FoodCategories : WorkoutCategories
-    // 2.创建空的数据分组
-    let groups = categories.map(c => new GroupInfo(c, []))
-    // 3.遍历items，对数据分组
+    let items = isFood ? foods: workouts
+    // 2.创建空的分组
+    let groups = categories.map(itemCategory => new GroupInfo(itemCategory, []))
+    // 3.遍历记录项列表，将食物添加到对应的分组
     items.forEach(item => groups[item.categoryId].items.push(item))
+    // 4.返回结果
     return groups
   }
 }
