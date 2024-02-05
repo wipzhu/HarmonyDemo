@@ -22,7 +22,10 @@ export default struct RecordList {
               Image($r('app.media.ic_public_add_norm_filled')).width(24).fillColor($r('app.color.primary_color'))
                 .onClick(() => {
                   router.pushUrl({
-                    url: 'pages/ItemIndex'
+                    url: 'pages/ItemIndex',
+                    params: {
+                      isFood: true
+                    }
                   })
                 })
             }

@@ -4,6 +4,7 @@ import ItemList from '../view/item/ItemList'
 import ItemPanelHeader from '../view/item/ItemPanelHeader'
 import ItemCard from '../view/item/ItemCard'
 import NumberKeyboard from '../view/item/NumberKeyboard'
+import RecordItem from '../viewmodel/RecordItem'
 
 @Entry
 @Component
@@ -11,10 +12,12 @@ struct ItemIndex {
   @State amount: number = 1
   @State value: string = ''
   @State showPanel: boolean = false //是否展示面板
+  @State item: RecordItem = null
 
-  onPanelShow() {
+  onPanelShow(item:RecordItem) {
     this.amount = 1
     this.value = ''
+    this.item = item
     this.showPanel = true
   }
 
@@ -32,7 +35,9 @@ struct ItemIndex {
         // 顶部日期
         ItemPanelHeader()
         // 记录项信息
-        ItemCard({ amount: this.amount })
+        if (this.item) {
+          ItemCard({ amount: this.amount, item:$item }) // 对象用link传,link使用$item
+        }
         // 数字键盘
         NumberKeyboard({ amount: $amount, value: $value }) // @Link用$amount，不用this.amount
         // 按钮
@@ -55,7 +60,7 @@ struct ItemIndex {
 
       }
       .mode(PanelMode.Full)
-      .dragBar(false)
+      .dragBar(true)
       .backgroundMask($r('app.color.light_gray'))
       .backgroundColor(Color.White)
 

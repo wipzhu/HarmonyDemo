@@ -1,4 +1,5 @@
 import { CommonConstants } from '../../common/constants/CommonConstants'
+import promptAction from '@ohos.promptAction'
 
 @Component
 export default struct SearchHeader {
@@ -12,6 +13,11 @@ export default struct SearchHeader {
         Image($r('app.media.ic_public_email'))
           .width(25)
       }
+      .onClick(() => {
+        promptAction.showToast({
+          message: '功能待实现'
+        })
+      })
     }
     .width(CommonConstants.THOUSANDTH_940)
   }
