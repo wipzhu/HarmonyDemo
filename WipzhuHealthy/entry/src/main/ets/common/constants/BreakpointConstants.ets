@@ -1,4 +1,4 @@
-import BreakpointType from '../bean/BreanpointType';
+import BreakpointType from '../bean/BreakpointType';
 export default class BreakpointConstants {
   /**
    * 小屏幕设备的 Breakpoints 标记.

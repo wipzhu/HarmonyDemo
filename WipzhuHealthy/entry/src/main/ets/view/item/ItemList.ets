@@ -2,11 +2,12 @@ import { CommonConstants } from '../../common/constants/CommonConstants'
 import RecordItem from '../../viewmodel/RecordItem'
 import ItemModel from '../../model/ItemModel'
 import GroupInfo from '../../viewmodel/GroupInfo'
+import ItemCategory from '../../viewmodel/ItemCategory'
 
 @Component
 export default struct ItemList {
-  showPanel: (item:RecordItem) => {}
-  @State isFood: boolean = false
+  showPanel: (item: RecordItem) => {}
+  @Prop isFood:boolean
   @State currentIndex: number = 0;
 
   build() {
@@ -15,11 +16,12 @@ export default struct ItemList {
         this.TabContentBuilder(ItemModel.list(this.isFood))
       }.tabBar('全部')
 
-      ForEach(ItemModel.listItemGroupByCategory(this.isFood), (group: GroupInfo) => {
-        TabContent() {
-          this.TabContentBuilder(group.items)
-        }.tabBar(group.type.name)
-      })
+      ForEach(ItemModel.listItemGroupByCategory(this.isFood),
+        (group: GroupInfo<ItemCategory, RecordItem>) => {
+          TabContent() {
+            this.TabContentBuilder(group.items)
+          }.tabBar(group.type.name)
+        })
     }
     .barMode(BarMode.Scrollable)
     .width(CommonConstants.THOUSANDTH_940)
@@ -38,6 +40,7 @@ export default struct ItemList {
               Text(item.name).fontWeight(CommonConstants.FONT_WEIGHT_500)
               Text(`${item.calorie}千卡/${item.unit}`).grayText()
             }
+            .alignItems(HorizontalAlign.Start)
 
             Blank()
             Image($r('app.media.ic_public_add_norm_filled')).width(24).fillColor($r('app.color.primary_color'))

@@ -5,7 +5,7 @@ import promptAction from '@ohos.promptAction'
 export default struct SearchHeader {
   build() {
     Row({ space: CommonConstants.SPACE_6 }) {
-      Search({ placeholder: '搜索饮食信息' })
+      Search({ placeholder: '搜索饮食或运动信息' })
         .textFont({ size: 18 })
         .layoutWeight(1)
       //角标

@@ -6,6 +6,15 @@ import RecordIndex from '../view/record/RecordIndex'
 struct Index {
   @State message: string = 'Hello World'
   @State tabCurrentIndex: number = 0
+  @State isPageShow:boolean = false
+
+  onPageShow() {
+    this.isPageShow = true
+  }
+
+  onPageHide() {
+    this.isPageShow = false
+  }
 
   @Builder TabBuilder(title: ResourceStr, image: ResourceStr, index: number) {
     Column({ space: CommonConstants.SPACE_4 }) {
@@ -22,7 +31,7 @@ struct Index {
   build() {
     Tabs({ barPosition: BarPosition.End }) {
       TabContent() {
-        RecordIndex()
+        RecordIndex({isPageShow: this.isPageShow})
       }
       .tabBar(this.TabBuilder($r('app.string.tab_record'), $r('app.media.ic_calendar'), 0))
 

@@ -1,5 +1,8 @@
 import { CommonConstants } from '../../common/constants/CommonConstants'
 import DateUtil from '../../common/utils/DateUtil'
+import RecordService from '../../service/RecordService'
+import RecordVO from '../../viewmodel/RecordVO'
+import StatsInfo from '../../viewmodel/StatsInfo'
 import CalorieStats from './CalorieStats'
 import DatePickerDialog from './DatePickerDialog'
 import NutrientStats from './NutrientStats'
@@ -8,9 +11,15 @@ import NutrientStats from './NutrientStats'
 export default struct StatisticCard {
   // 单向从datePickerDialog中获取已选中的日期
   @StorageProp('selectedDate') selectedDate: number = DateUtil.beginTimeOfDay(new Date())
+  @Consume @Watch('handleRecordsChange') records: RecordVO[]
+  @State info: StatsInfo = new StatsInfo()
   controller: CustomDialogController = new CustomDialogController({
     builder: DatePickerDialog({ selectedDate: new Date(this.selectedDate) })
   })
+
+  handleRecordsChange() {
+    this.info = RecordService.calculateStatsInfo(this.records)
+  }
 
   build() {
     Column() {
@@ -27,14 +36,14 @@ export default struct StatisticCard {
 
       Swiper() {
         // 热量统计
-        CalorieStats()
+        CalorieStats({ intake: this.info.intake, expend: this.info.expend })
         // 营养素统计
-        NutrientStats()
+        NutrientStats({ carbon: this.info.carbon, protein: this.info.protein, fat: this.info.fat })
       }
       .width('100%')
       .backgroundColor(Color.White)
       .borderRadius(CommonConstants.DEFAULT_18)
-      .indicatorStyle({selectedColor:$r('app.color.primary_color')})
+      .indicatorStyle({ selectedColor: $r('app.color.primary_color') })
 
     }
     .width(CommonConstants.THOUSANDTH_940)

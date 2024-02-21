@@ -25,10 +25,10 @@ export default struct ItemCard {
         .margin({ top: CommonConstants.SPACE_10 })
 
       Row({ space: CommonConstants.SPACE_8 }) {
-        this.NutrientInfo('热量（千卡）', this.item.calorie)
-        if (this.item.carbon) this.NutrientInfo('碳水（克）', this.item.carbon)
-        if (this.item.protein) this.NutrientInfo('蛋白质（克）', this.item.protein)
-        if (this.item.fat) this.NutrientInfo('脂肪（克）', this.item.fat)
+        this.NutrientInfo({ label: '热量（千卡）', value: this.item.calorie })
+        if (this.item.carbon) this.NutrientInfo({ label: '碳水（克）', value: this.item.carbon })
+        if (this.item.carbon) this.NutrientInfo({ label: '蛋白质（克）', value: this.item.protein })
+        if (this.item.carbon) this.NutrientInfo({ label: '脂肪（克）', value: this.item.fat })
       }
       .padding({ top: CommonConstants.SPACE_10, bottom: CommonConstants.SPACE_10 })
 
@@ -56,10 +56,10 @@ export default struct ItemCard {
 
   }
 
-  @Builder NutrientInfo(label: string, value: number) {
+  @Builder NutrientInfo($$:{label: string, value: number}) {
     Column({ space: CommonConstants.SPACE_6 }) {
-      Text(label).fontColor($r('app.color.light_gray')).fontSize(14)
-      Text((value * this.amount).toFixed(1)).fontWeight(CommonConstants.FONT_WEIGHT_600).fontSize(18)
+      Text($$.label).fontColor($r('app.color.light_gray')).fontSize(14)
+      Text(($$.value * this.amount).toFixed(2)).fontWeight(CommonConstants.FONT_WEIGHT_600).fontSize(18)
     }
 
   }

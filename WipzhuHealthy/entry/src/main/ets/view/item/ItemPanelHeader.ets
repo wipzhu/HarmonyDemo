@@ -1,10 +1,11 @@
 import { CommonConstants } from '../../common/constants/CommonConstants'
 import DateUtil from '../../common/utils/DateUtil'
-import promptAction from '@ohos.promptAction'
 import DatePickerDialog from '../record/DatePickerDialog'
+import RecordType from '../../viewmodel/RecordType'
 
 @Component
 export default struct ItemPanelHeader {
+  @Link type:RecordType
   // 单向从datePickerDialog中获取已选中的日期
   @StorageProp('selectedDate') selectedDate: number = DateUtil.beginTimeOfDay(new Date())
   controller: CustomDialogController = new CustomDialogController({
@@ -13,9 +14,10 @@ export default struct ItemPanelHeader {
 
   build() {
     Row() {
-      Text(DateUtil.formatDate(this.selectedDate) + ' 早餐')
+      Text(DateUtil.formatDate(this.selectedDate))
         .fontSize(18).fontWeight(CommonConstants.FONT_WEIGHT_500)
         .textAlign(TextAlign.Center)
+
       Image($r('app.media.ic_public_spinner'))
         .width(20)
         .fillColor($r('app.color.gray'))
